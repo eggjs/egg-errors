@@ -10,8 +10,6 @@ module.exports = {
     'coverage',
   ],
   dep: [
-    'egg',
-    'egg-scripts',
   ],
   devdep: [
     'autod',

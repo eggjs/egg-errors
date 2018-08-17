@@ -1,6 +1,6 @@
-# hackernews-async-ts
+# egg-errors
 
-[Hacker News](https://news.ycombinator.com/) showcase using typescript && egg
+Error declare for Egg.js
 
 ## QuickStart
 
