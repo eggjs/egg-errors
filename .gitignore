@@ -13,3 +13,4 @@ logs/
 **/*.js
 !scripts
 **/*.d.ts
+!test/global.d.ts
