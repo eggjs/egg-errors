@@ -1,7 +1,14 @@
+// base error
+export { default as EggBaseError } from './lib/base_error';
+export { default as EggBaseException } from './lib/base_exception';
+export { default as ErrorOptions } from './lib/error_options';
+export { default as ErrorType } from './lib/error_type';
+
+// error and exception
 export { default as EggError } from './lib/error';
 export { default as EggException } from './lib/exception';
-export { default as ErrorOptions } from './lib/error_options';
 
+// http error
 export { default as HttpError } from './lib/http/http_error';
 
 // http error 400 ~ 500

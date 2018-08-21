@@ -1,4 +1,4 @@
-import EggError from '../error';
+import EggError from '../base_error';
 import HttpErrorOptions from './http_error_options';
 import HttpHeader from './http_header';
 

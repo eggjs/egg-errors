@@ -1,14 +1,12 @@
-import BaseError from './base';
-import ErrorOptions from './error_options';
-import ErrorType from './error_type';
+import { ErrorOptions } from '..';
+import EggBaseException from './base_exception';
 
-const TYPE = Symbol.for('BaseError#type');
-
-class EggException extends BaseError<ErrorOptions> {
-  constructor(options?: ErrorOptions) {
-    super(options);
-
-    this[TYPE] = ErrorType.EXCEPTION;
+class EggException extends EggBaseException<ErrorOptions> {
+  constructor(message?: string) {
+    super({
+      code: 'EGG_EXCEPTION',
+      message: message || '',
+    });
   }
 }
 

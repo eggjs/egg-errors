@@ -1,86 +1,118 @@
 import * as assert from 'assert';
-import { EggError, EggException, ErrorOptions } from '..';
+import { EggBaseError, EggBaseException, ErrorOptions, EggError, EggException } from '..';
 
 describe('test/error.test.ts', () => {
 
-  describe('error', () => {
+  describe('base error', () => {
     it('should instantiate without params', () => {
-      const err = new EggError();
+      const err = new EggBaseError();
       assert(err.code === '');
       assert(err.message === '');
-      assert(err.name === 'EggError');
+      assert(err.name === 'EggBaseError');
     });
 
     it('should instantiate with object', () => {
-      const err = new EggError({
+      const err = new EggBaseError({
         code: 'CODE',
         message: 'error',
       });
       assert(err.code === 'CODE');
       assert(err.message === 'error');
+      assert(err.name === 'EggBaseError');
+    });
+  });
+
+  describe('error', () => {
+    it('should instantiate without params', () => {
+      const err = new EggError();
+      assert(err.code === 'EGG_ERROR');
+      assert(err.message === '');
       assert(err.name === 'EggError');
+    });
+
+    it('should instantiate with object', () => {
+      const err = new EggError('egg error');
+      assert(err.code === 'EGG_ERROR');
+      assert(err.message === 'egg error');
+      assert(err.name === 'EggError');
+    });
+  });
+
+  describe('base exception', () => {
+    it('should instantiate without params', () => {
+      const err = new EggBaseException();
+      assert(err.code === '');
+      assert(err.message === '');
+      assert(err.name === 'EggBaseException');
+    });
+
+    it('should instantiate with object', () => {
+      const err = new EggBaseException({
+        code: 'CODE',
+        message: 'error',
+      });
+      assert(err.code === 'CODE');
+      assert(err.message === 'error');
+      assert(err.name === 'EggBaseException');
     });
   });
 
   describe('exception', () => {
     it('should instantiate without params', () => {
       const err = new EggException();
-      assert(err.code === '');
+      assert(err.code === 'EGG_EXCEPTION');
       assert(err.message === '');
       assert(err.name === 'EggException');
     });
 
     it('should instantiate with object', () => {
-      const err = new EggException({
-        code: 'CODE',
-        message: 'error',
-      });
-      assert(err.code === 'CODE');
-      assert(err.message === 'error');
+      const err = new EggException('egg exception');
+      assert(err.code === 'EGG_EXCEPTION');
+      assert(err.message === 'egg exception');
       assert(err.name === 'EggException');
     });
   });
 
   describe('getType', () => {
     it('should return ERROR', () => {
-      const err = new EggError();
-      assert(EggError.getType(err) === 'ERROR');
+      const err = new EggBaseError();
+      assert(EggBaseError.getType(err) === 'ERROR');
     });
 
     it('should return EXCEPTION', () => {
-      const err = new EggException();
-      assert(EggError.getType(err) === 'EXCEPTION');
+      const err = new EggBaseException();
+      assert(EggBaseError.getType(err) === 'EXCEPTION');
     });
 
     it('should return BUILTIN', () => {
       const err = new Error();
-      assert(EggError.getType(err) === 'BUILTIN');
+      assert(EggBaseError.getType(err) === 'BUILTIN');
     });
   });
 
   describe('from', () => {
     it('should create Error', () => {
       const err = new Error('error message');
-      const err2 = EggError.from(err);
+      const err2 = EggBaseError.from(err);
       assert(err2.code === '');
       assert(err2.message === 'error message');
-      assert(err2.name === 'EggError');
+      assert(err2.name === 'EggBaseError');
       assert(err2.stack === err.stack);
-      assert(EggError.getType(err2) === 'ERROR');
+      assert(EggBaseError.getType(err2) === 'ERROR');
     });
 
     it('should create Exception', () => {
       const err = new Error('error message');
-      const err2 = EggException.from(err);
+      const err2 = EggBaseException.from(err);
       assert(err2.code === '');
       assert(err2.message === 'error message');
-      assert(err2.name === 'EggException');
+      assert(err2.name === 'EggBaseException');
       assert(err2.stack === err.stack);
-      assert(EggException.getType(err2) === 'EXCEPTION');
+      assert(EggBaseException.getType(err2) === 'EXCEPTION');
     });
 
     it('should create custom Error', () => {
-      class CustomError extends EggError<ErrorOptions> {
+      class CustomError extends EggBaseError<ErrorOptions> {
         public data: object;
       }
       const err = new Error('error message');
@@ -94,7 +126,7 @@ describe('test/error.test.ts', () => {
 
   describe('extendable', () => {
     it('custom error', () => {
-      class CustomError extends EggError<ErrorOptions> {}
+      class CustomError extends EggBaseError<ErrorOptions> {}
       const err = new CustomError({
         code: 'CODE',
         message: 'error',
@@ -108,7 +140,7 @@ describe('test/error.test.ts', () => {
       class CustomErrorOptions extends ErrorOptions {
         public data: object;
       }
-      class CustomError extends EggError<CustomErrorOptions> {
+      class CustomError extends EggBaseError<CustomErrorOptions> {
         public data: object;
         protected options: CustomErrorOptions;
 
