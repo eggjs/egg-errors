@@ -53,7 +53,7 @@ You can import an error from an normal error object
 
 ```js
 err = new Error('normal error');
-console.log(EggError.getType(err)); // BUILDIN
+console.log(EggError.getType(err)); // BUILTIN
 err = EggError.from(err);
 console.log(EggError.getType(err)); // ERROR
 ```
@@ -95,7 +95,7 @@ Recommand use message instead of options in user land that it can be easily unde
 
 ### HTTP Errors
 
-HTTP Errors is buildin errors that transform 400 ~ 500 status code to error objects. HttpError extends EggBaseError providing two properties which is `status` and `headers`;
+HTTP Errors is BUILTIN errors that transform 400 ~ 500 status code to error objects. HttpError extends EggBaseError providing two properties which is `status` and `headers`;
 
 ```js
 const { ForbiddenError } = require('egg-errors');

@@ -6,7 +6,7 @@ const TYPE = Symbol.for('BaseError#type');
 class BaseError<T extends ErrorOptions> extends Error {
 
   public static getType(err: Error): string {
-    return err[TYPE] || ErrorType.BUILDIN;
+    return err[TYPE] || ErrorType.BUILTIN;
   }
 
   public static from(err: Error): BaseError<ErrorOptions> {

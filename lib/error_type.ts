@@ -1,5 +1,5 @@
 enum ErrorType {
-  BUILDIN = 'BUILDIN',
+  BUILTIN = 'BUILTIN',
   ERROR = 'ERROR',
   EXCEPTION = 'EXCEPTION',
 }

@@ -52,9 +52,9 @@ describe('test/error.test.ts', () => {
       assert(EggError.getType(err) === 'EXCEPTION');
     });
 
-    it('should return BUILDIN', () => {
+    it('should return BUILTIN', () => {
       const err = new Error();
-      assert(EggError.getType(err) === 'BUILDIN');
+      assert(EggError.getType(err) === 'BUILTIN');
     });
   });
 
