@@ -18,6 +18,9 @@
     "lib/**/*.js",
     "lib/**/*.d.ts"
   ],
+  "dependencies": {
+
+  },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
     "@types/node": "^7.0.12",
@@ -26,6 +29,9 @@
     "dedent": "^0.7.0",
     "egg-bin": "^4.8.1",
     "egg-ci": "^1.8.0",
+    "statuses": "^1.5.0",
+    "toidentifier": "^1.0.0",
+    "tslib": "^1.9.3",
     "tslint": "^4.0.0",
     "typescript": "^3.0.1"
   },
