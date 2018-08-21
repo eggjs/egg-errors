@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { EggBaseError, EggBaseException, ErrorOptions, EggError, EggException } from '..';
+import { EggBaseError, EggBaseException, EggError, EggException, ErrorOptions } from '..';
 
 describe('test/error.test.ts', () => {
 
@@ -92,12 +92,15 @@ describe('test/error.test.ts', () => {
 
   describe('from', () => {
     it('should create Error', () => {
+      const now = Date.now();
       const err = new Error('error message');
+      err.time = now;
       const err2 = EggBaseError.from(err);
       assert(err2.code === '');
       assert(err2.message === 'error message');
       assert(err2.name === 'EggBaseError');
       assert(err2.stack === err.stack);
+      assert(err2.time === now);
       assert(EggBaseError.getType(err2) === 'ERROR');
     });
 

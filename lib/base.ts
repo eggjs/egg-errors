@@ -5,6 +5,8 @@ const TYPE = Symbol.for('BaseError#type');
 
 class BaseError<T extends ErrorOptions> extends Error {
 
+  [key: string]: any;
+
   public static getType(err: Error): string {
     return err[TYPE] || ErrorType.BUILTIN;
   }
@@ -15,6 +17,9 @@ class BaseError<T extends ErrorOptions> extends Error {
       message: err.message,
     });
     newErr.stack = err.stack;
+    for (const key of Object.keys(err)) {
+      newErr[key] = err[key];
+    }
     return newErr;
   }
 
