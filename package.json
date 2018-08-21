@@ -8,6 +8,7 @@
     "tsc": "tsc -p tsconfig.json",
     "ci": "npm run lint && npm run cov && npm run tsc",
     "autod": "autod",
+    "prepublish": "npm run tsc",
     "lint": "tslint --project . -c tslint.json"
   },
   "main": "index.js",
