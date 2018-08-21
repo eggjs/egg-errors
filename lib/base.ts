@@ -1,14 +1,12 @@
 import ErrorOptions from './error_options';
 import ErrorType from './error_type';
 
-const TYPE = Symbol.for('BaseError#type');
+const TYPE: symbol = Symbol.for('BaseError#type');
 
 class BaseError<T extends ErrorOptions> extends Error {
 
-  [key: string]: any;
-
   public static getType(err: Error): string {
-    return err[TYPE] || ErrorType.BUILTIN;
+    return (err as any)[TYPE] || ErrorType.BUILTIN;
   }
 
   public static from(err: Error): BaseError<ErrorOptions> {

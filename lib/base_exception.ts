@@ -8,7 +8,7 @@ class EggBaseException<T extends ErrorOptions> extends BaseError<T> {
   constructor(options?: T) {
     super(options);
 
-    this[TYPE] = ErrorType.EXCEPTION;
+    (this as any)[TYPE] = ErrorType.EXCEPTION;
   }
 }
 
