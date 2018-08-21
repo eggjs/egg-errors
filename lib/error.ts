@@ -5,8 +5,8 @@ import ErrorType from './error_type';
 const TYPE = Symbol.for('BaseError#type');
 
 class EggError<T extends ErrorOptions> extends BaseError<T> {
-  constructor(message?: T) {
-    super(message);
+  constructor(options?: T) {
+    super(options);
 
     this[TYPE] = ErrorType.ERROR;
   }

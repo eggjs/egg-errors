@@ -8,8 +8,8 @@ class HttpError extends EggError<HttpErrorOptions> {
   public headers?: HttpHeader;
   protected options: HttpErrorOptions;
 
-  constructor(message?: HttpErrorOptions) {
-    super(message);
+  constructor(options?: HttpErrorOptions) {
+    super(options);
 
     if (this.options) {
       this.status = this.options.status;
