@@ -1,3 +1,3 @@
 export default class HttpHeader {
-  [key: string]: number;
+  [key: string]: string;
 }
