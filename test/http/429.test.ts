@@ -9,4 +9,11 @@ describe('test/http/429.test.ts', () => {
     assert(err.name === 'TooManyRequestsError');
     assert(err.status === 429);
   });
+  
+  it('should not throw an error', function() {
+    (function() {
+      const error = new TooManyRequestsError();
+      error.headers['Retry-After'] = 120;
+    }).should.not.throw();
+  });
 });
