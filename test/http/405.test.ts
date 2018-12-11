@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { MethodNotAllowedError } from '../..';
+import { MethodNotAllowedError } from '../../lib';
 
 describe('test/http/405.test.ts', () => {
   it('should instantiate', () => {

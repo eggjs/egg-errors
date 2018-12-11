@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { FailedDependencyError } from '../..';
+import { FailedDependencyError } from '../../lib';
 
 describe('test/http/424.test.ts', () => {
   it('should instantiate', () => {

@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { HTTPVersionNotSupportedError } from '../..';
+import { HTTPVersionNotSupportedError } from '../../lib';
 
 describe('test/http/505.test.ts', () => {
   it('should instantiate', () => {

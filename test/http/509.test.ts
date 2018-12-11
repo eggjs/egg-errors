@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { BandwidthLimitExceededError } from '../..';
+import { BandwidthLimitExceededError } from '../../lib';
 
 describe('test/http/509.test.ts', () => {
   it('should instantiate', () => {

@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { UnsupportedMediaTypeError } from '../..';
+import { UnsupportedMediaTypeError } from '../../lib';
 
 describe('test/http/415.test.ts', () => {
   it('should instantiate', () => {

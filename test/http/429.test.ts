@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { TooManyRequestsError } from '../..';
+import { TooManyRequestsError } from '../../lib';
 
 describe('test/http/429.test.ts', () => {
   it('should instantiate', () => {

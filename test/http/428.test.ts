@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { PreconditionRequiredError } from '../..';
+import { PreconditionRequiredError } from '../../lib';
 
 describe('test/http/428.test.ts', () => {
   it('should instantiate', () => {

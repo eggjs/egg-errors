@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { UnorderedCollectionError } from '../..';
+import { UnorderedCollectionError } from '../../lib';
 
 describe('test/http/425.test.ts', () => {
   it('should instantiate', () => {

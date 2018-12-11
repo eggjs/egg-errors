@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { InternalServerError } from '../..';
+import { InternalServerError } from '../../lib';
 
 describe('test/http/500.test.ts', () => {
   it('should instantiate', () => {

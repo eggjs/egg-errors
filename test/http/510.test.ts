@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { NotExtendedError } from '../..';
+import { NotExtendedError } from '../../lib';
 
 describe('test/http/510.test.ts', () => {
   it('should instantiate', () => {

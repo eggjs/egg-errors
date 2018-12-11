@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { RequestTimeoutError } from '../..';
+import { RequestTimeoutError } from '../../lib';
 
 describe('test/http/408.test.ts', () => {
   it('should instantiate', () => {

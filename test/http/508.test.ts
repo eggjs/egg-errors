@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { LoopDetectedError } from '../..';
+import { LoopDetectedError } from '../../lib';
 
 describe('test/http/508.test.ts', () => {
   it('should instantiate', () => {

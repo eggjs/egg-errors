@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { PayloadTooLargeError } from '../..';
+import { PayloadTooLargeError } from '../../lib';
 
 describe('test/http/413.test.ts', () => {
   it('should instantiate', () => {

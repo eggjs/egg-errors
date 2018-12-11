@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { EggBaseError, EggBaseException, EggError, EggException, ErrorOptions, NotFoundError } from '..';
+import { EggBaseError, EggBaseException, EggError, EggException, ErrorOptions, NotFoundError } from '../lib';
 
 describe('test/error.test.ts', () => {
 

@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { UpgradeRequiredError } from '../..';
+import { UpgradeRequiredError } from '../../lib';
 
 describe('test/http/426.test.ts', () => {
   it('should instantiate', () => {

@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { ImATeapotError } from '../..';
+import { ImATeapotError } from '../../lib';
 
 describe('test/http/418.test.ts', () => {
   it('should instantiate', () => {

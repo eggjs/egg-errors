@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { LockedError } from '../..';
+import { LockedError } from '../../lib';
 
 describe('test/http/423.test.ts', () => {
   it('should instantiate', () => {

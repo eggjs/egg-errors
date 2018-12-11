@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { ProxyAuthenticationRequiredError } from '../..';
+import { ProxyAuthenticationRequiredError } from '../../lib';
 
 describe('test/http/407.test.ts', () => {
   it('should instantiate', () => {

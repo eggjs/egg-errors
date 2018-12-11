@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { VariantAlsoNegotiatesError } from '../..';
+import { VariantAlsoNegotiatesError } from '../../lib';
 
 describe('test/http/506.test.ts', () => {
   it('should instantiate', () => {
