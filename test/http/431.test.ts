@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { RequestHeaderFieldsTooLargeError } from '../..';
+import { RequestHeaderFieldsTooLargeError } from '../../lib';
 
 describe('test/http/431.test.ts', () => {
   it('should instantiate', () => {

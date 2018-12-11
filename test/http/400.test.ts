@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { BadRequestError } from '../..';
+import { BadRequestError } from '../../lib';
 
 describe('test/http/400.test.ts', () => {
   it('should instantiate', () => {

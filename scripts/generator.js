@@ -35,7 +35,7 @@ for (const status of Object.keys(statuses)) {
 
   body = dedent`
     import * as assert from 'assert';
-    import { ${className} } from '../..';
+    import { ${className} } from '../../lib';
 
     describe('test/http/${status}.test.ts', () => {
       it('should instantiate', () => {

@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { EggBaseError, EggBaseException, EggError, EggException, ErrorOptions } from '..';
+import { EggBaseError, EggBaseException, EggError, EggException, ErrorOptions, NotFoundError } from '../lib';
 
 describe('test/error.test.ts', () => {
 
@@ -163,4 +163,12 @@ describe('test/error.test.ts', () => {
       assert.deepEqual(err.data, { a: 1 });
     });
   });
+
+  describe('header', () => {
+    it('should has default header', () => {
+      const err = new NotFoundError('sth not found');
+      err.headers['Retry-After'] = 120;
+    });
+  });
+
 });

@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { PaymentRequiredError } from '../..';
+import { PaymentRequiredError } from '../../lib';
 
 describe('test/http/402.test.ts', () => {
   it('should instantiate', () => {

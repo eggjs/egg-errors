@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { MisdirectedRequestError } from '../..';
+import { MisdirectedRequestError } from '../../lib';
 
 describe('test/http/421.test.ts', () => {
   it('should instantiate', () => {

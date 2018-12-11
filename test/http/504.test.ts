@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { GatewayTimeoutError } from '../..';
+import { GatewayTimeoutError } from '../../lib';
 
 describe('test/http/504.test.ts', () => {
   it('should instantiate', () => {

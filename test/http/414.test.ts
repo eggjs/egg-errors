@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { URITooLongError } from '../..';
+import { URITooLongError } from '../../lib';
 
 describe('test/http/414.test.ts', () => {
   it('should instantiate', () => {

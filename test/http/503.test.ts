@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { ServiceUnavailableError } from '../..';
+import { ServiceUnavailableError } from '../../lib';
 
 describe('test/http/503.test.ts', () => {
   it('should instantiate', () => {

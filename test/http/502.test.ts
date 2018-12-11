@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { BadGatewayError } from '../..';
+import { BadGatewayError } from '../../lib';
 
 describe('test/http/502.test.ts', () => {
   it('should instantiate', () => {

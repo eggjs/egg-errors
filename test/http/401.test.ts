@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { UnauthorizedError } from '../..';
+import { UnauthorizedError } from '../../lib';
 
 describe('test/http/401.test.ts', () => {
   it('should instantiate', () => {

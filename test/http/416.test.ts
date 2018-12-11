@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { RangeNotSatisfiableError } from '../..';
+import { RangeNotSatisfiableError } from '../../lib';
 
 describe('test/http/416.test.ts', () => {
   it('should instantiate', () => {

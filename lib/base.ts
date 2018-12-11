@@ -28,9 +28,9 @@ class BaseError<T extends ErrorOptions> extends Error {
 
   constructor(options?: T) {
     super();
-    this.options = options;
-    this.message = this.options && this.options.message || '';
-    this.code = this.options && this.options.code || '';
+    this.options = options || {} as T;
+    this.message = this.options.message || '';
+    this.code = this.options.code || '';
     this.name = this.constructor.name;
   }
 

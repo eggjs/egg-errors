@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { ConflictError } from '../..';
+import { ConflictError } from '../../lib';
 
 describe('test/http/409.test.ts', () => {
   it('should instantiate', () => {

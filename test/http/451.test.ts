@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { UnavailableForLegalReasonsError } from '../..';
+import { UnavailableForLegalReasonsError } from '../../lib';
 
 describe('test/http/451.test.ts', () => {
   it('should instantiate', () => {

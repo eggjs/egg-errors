@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { UnprocessableEntityError } from '../..';
+import { UnprocessableEntityError } from '../../lib';
 
 describe('test/http/422.test.ts', () => {
   it('should instantiate', () => {

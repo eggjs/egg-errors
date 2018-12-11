@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { NetworkAuthenticationRequiredError } from '../..';
+import { NetworkAuthenticationRequiredError } from '../../lib';
 
 describe('test/http/511.test.ts', () => {
   it('should instantiate', () => {

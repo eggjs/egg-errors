@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { GoneError } from '../..';
+import { GoneError } from '../../lib';
 
 describe('test/http/410.test.ts', () => {
   it('should instantiate', () => {

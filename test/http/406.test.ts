@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { NotAcceptableError } from '../..';
+import { NotAcceptableError } from '../../lib';
 
 describe('test/http/406.test.ts', () => {
   it('should instantiate', () => {

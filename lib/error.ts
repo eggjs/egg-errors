@@ -1,4 +1,4 @@
-import { ErrorOptions } from '..';
+import ErrorOptions from './error_options';
 import EggBaseError from './base_error';
 
 class EggError extends EggBaseError<ErrorOptions> {

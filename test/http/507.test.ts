@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { InsufficientStorageError } from '../..';
+import { InsufficientStorageError } from '../../lib';
 
 describe('test/http/507.test.ts', () => {
   it('should instantiate', () => {
