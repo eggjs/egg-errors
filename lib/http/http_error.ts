@@ -5,16 +5,15 @@ import HttpHeader from './http_header';
 class HttpError extends EggError<HttpErrorOptions> {
 
   public status: number;
-  public headers?: HttpHeader;
+  public headers: HttpHeader;
   protected options: HttpErrorOptions;
 
   constructor(options?: HttpErrorOptions) {
     super(options);
 
-    if (this.options) {
-      this.status = this.options.status;
-      this.headers = this.options.headers;
-    }
+    this.headers = {};
+    this.status = this.options.status;
+    this.headers = this.options.headers || {};
   }
 
 }
