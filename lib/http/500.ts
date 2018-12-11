@@ -1,6 +1,6 @@
 import HttpError from './http_error';
 
-class InternalServerErrorError extends HttpError {
+class InternalServerError extends HttpError {
 
   constructor(message?: string) {
     const status = 500;
@@ -11,4 +11,4 @@ class InternalServerErrorError extends HttpError {
   }
 }
 
-export default InternalServerErrorError;
+export default InternalServerError;

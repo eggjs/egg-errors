@@ -9,7 +9,7 @@ for (const status of Object.keys(statuses)) {
   if (status < 400) continue;
 
   const identifier = toidentifier(statuses[status]);
-  const className = identifier + 'Error';
+  const className = /Error$/.test(identifier) ? identifier : identifier + 'Error';
   const code = toCode(identifier);
   const message = statuses[status].replace('\'', '\\\'');
 

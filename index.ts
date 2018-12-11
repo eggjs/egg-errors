@@ -41,7 +41,7 @@ export { default as PreconditionRequiredError } from './lib/http/428';
 export { default as TooManyRequestsError } from './lib/http/429';
 export { default as RequestHeaderFieldsTooLargeError } from './lib/http/431';
 export { default as UnavailableForLegalReasonsError } from './lib/http/451';
-export { default as InternalServerErrorError } from './lib/http/500';
+export { default as InternalServerError } from './lib/http/500';
 export { default as NotImplementedError } from './lib/http/501';
 export { default as BadGatewayError } from './lib/http/502';
 export { default as ServiceUnavailableError } from './lib/http/503';
