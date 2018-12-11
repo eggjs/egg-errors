@@ -15,7 +15,8 @@ module.exports = {
     'autod',
     'autod-egg',
     'egg-bin',
-    'tslib',
+    'tslint',
+    'tslint-config-egg',
     'typescript',
   ],
   keep: [

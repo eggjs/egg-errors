@@ -1,7 +1,3 @@
 {
-  "extends": "tslint:recommended",
-  "rules": {
-    "quotemark": [ true, "single" ],
-    "max-classes-per-file": false
-  }
+  "extends": "tslint-config-egg"
 }
