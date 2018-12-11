@@ -1,6 +1,6 @@
 {
   "name": "egg-errors",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "",
   "scripts": {
     "test": "egg-bin test --typescript",
@@ -17,8 +17,7 @@
     "lib/**/*.js",
     "lib/**/*.d.ts"
   ],
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@types/mocha": "^2.2.40",
     "@types/node": "^7.0.12",
