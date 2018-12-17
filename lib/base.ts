@@ -27,7 +27,6 @@ class BaseError<T extends ErrorOptions> extends Error {
 
   constructor(options?: T) {
     super();
-    console.log(options);
     this.options = options || {} as T;
     this.message = this.options.message || '';
     this.code = this.options.code || '';
