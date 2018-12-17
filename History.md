@@ -1,4 +1,10 @@
 
+2.0.1 / 2018-12-17
+==================
+
+**fixes**
+  * [[`e2356cc`](http://github.com/eggjs/egg-errors/commit/e2356ccfa5e4caec8044957bf8e95202ae024f4a)] - fix: set the right message when contructor is string (#7) (Haoliang Gao <<sakura9515@gmail.com>>)
+
 2.0.0 / 2018-12-11
 ==================
 
