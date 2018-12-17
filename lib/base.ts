@@ -13,9 +13,8 @@ class BaseError<T extends ErrorOptions> extends Error {
 
   public static from(err: Error): BaseError<ErrorOptions> {
     const ErrorClass = this;
-    const newErr = new ErrorClass<ErrorOptions>({
-      message: err.message,
-    });
+    const newErr = new ErrorClass<ErrorOptions>();
+    newErr.message = err.message;
     newErr.stack = err.stack;
     for (const key of Object.keys(err)) {
       newErr[key] = err[key];
@@ -28,6 +27,7 @@ class BaseError<T extends ErrorOptions> extends Error {
 
   constructor(options?: T) {
     super();
+    console.log(options);
     this.options = options || {} as T;
     this.message = this.options.message || '';
     this.code = this.options.code || '';

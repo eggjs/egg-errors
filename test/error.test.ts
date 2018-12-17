@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import { EggBaseError, EggBaseException, EggError, EggException, ErrorOptions, NotFoundError } from '../lib';
+import { EggBaseError, EggBaseException, EggError, EggException, ErrorOptions, NotFoundError, InternalServerError } from '../lib';
 
 describe('test/error.test.ts', () => {
 
@@ -123,6 +123,15 @@ describe('test/error.test.ts', () => {
       assert(err2.code === '');
       assert(err2.message === 'error message');
       assert(err2.name === 'CustomError');
+      assert(err2.stack === err.stack);
+    });
+
+    it('should create http Error', () => {
+      const err = new Error('error message');
+      const err2 = InternalServerError.from(err);
+      assert(err2.code === 'INTERNAL_SERVER_ERROR');
+      assert(err2.message === 'error message');
+      assert(err2.name === 'InternalServerError');
       assert(err2.stack === err.stack);
     });
   });
