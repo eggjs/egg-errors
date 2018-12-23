@@ -103,6 +103,14 @@ const err = new ForbiddenError('your request is forbidden');
 console.log(err.status); // 403
 ```
 
+Support short name too:
+
+```js
+const { E403 } = require('egg-errors');
+const err = new E403('your request is forbidden');
+console.log(err.status); // 403
+```
+
 ### Available Errors
 
 ```
@@ -110,7 +118,7 @@ BaseError
 |- EggBaseError
 |  |- EggError
 |  |- HttpError
-|  |  |- NotFoundError
+|  |  |- NotFoundError, alias to E404
 |  |  `- ...
 |  `- CustomError
 `- EggBaseException
