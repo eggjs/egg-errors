@@ -12,6 +12,6 @@ logs/
 .nyc_output/
 
 **/*.js
-!scripts
+!scripts/*.js
 **/*.d.ts
 !test/global.d.ts

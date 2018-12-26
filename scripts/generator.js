@@ -13,7 +13,7 @@ for (const status of Object.keys(statuses)) {
   const code = toCode(identifier);
   const message = statuses[status].replace('\'', '\\\'');
 
-  console.info(`export { default as ${className} } from './lib/http/${status}';`);
+  console.info(`export { default as ${className}, default as E${status} } from './http/${status}';`);
 
   let body = dedent`
     import HttpError from './http_error';
@@ -35,11 +35,19 @@ for (const status of Object.keys(statuses)) {
 
   body = dedent`
     import * as assert from 'assert';
-    import { ${className} } from '../../lib';
+    import { ${className}, E${status} } from '../../lib';
 
     describe('test/http/${status}.test.ts', () => {
       it('should instantiate', () => {
         const err = new ${className}();
+        assert(err.code === '${code}');
+        assert(err.message === '${message}');
+        assert(err.name === '${className}');
+        assert(err.status === ${status});
+      });
+
+      it('should alias to short name E${status}', () => {
+        const err = new E${status}();
         assert(err.code === '${code}');
         assert(err.message === '${message}');
         assert(err.name === '${className}');
@@ -53,4 +61,3 @@ for (const status of Object.keys(statuses)) {
 function toCode(identifier) {
   return identifier.replace(/([a-zA-Z])([A-Z][a-z])/g, (_, $1, $2) => $1 + '_' + $2).toUpperCase();
 }
-
