@@ -1,4 +1,10 @@
 
+2.1.0 / 2018-12-26
+==================
+
+**features**
+  * [[`10d565a`](http://github.com/eggjs/egg-errors/commit/10d565a24118c62d0a8a5ac2edcf04ab0df3968b)] - feat: support short name for HTTP Errors (#8) (fengmk2 <<fengmk2@gmail.com>>)
+
 2.0.1 / 2018-12-17
 ==================
 
