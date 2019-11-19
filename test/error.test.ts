@@ -126,6 +126,48 @@ describe('test/error.test.ts', () => {
       assert(err2.stack === err.stack);
     });
 
+    it('should create custom Error whit constructor params', () => {
+      interface CustomErrorOptions extends ErrorOptions {
+        add: string;
+      }
+
+      class CustomError extends EggBaseError<CustomErrorOptions> {
+        custom: boolean;
+        constructor(options: CustomErrorOptions, custom: boolean) {
+          super(options);
+          this.custom = custom;
+        }
+      }
+      const err = new Error('error message');
+      const err2 = CustomError.from(err, { code: 'CustomCode', message: 'custom message', add: '' }, true);
+      assert(err2.code === 'CustomCode');
+      assert(err2.message === 'error message');
+      assert(err2.name === 'CustomError');
+      assert(err2.stack === err.stack);
+      assert(err2.custom === true);
+    });
+
+    it('should create custom Error not whit constructor params', () => {
+      interface CustomErrorOptions extends ErrorOptions {
+        add: string;
+      }
+
+      class CustomError extends EggBaseError<CustomErrorOptions> {
+        custom: boolean;
+        constructor(options: CustomErrorOptions, custom: boolean) {
+          super(options);
+          this.custom = custom;
+        }
+      }
+      const err = new Error('error message');
+      const err2 = CustomError.from(err);
+      assert(err2.code === '');
+      assert(err2.message === 'error message');
+      assert(err2.name === 'CustomError');
+      assert(err2.stack === err.stack);
+      assert(err2.custom === undefined);
+    });
+
     it('should create http Error', () => {
       const err = new Error('error message');
       const err2 = InternalServerError.from(err);
@@ -138,7 +180,7 @@ describe('test/error.test.ts', () => {
 
   describe('extendable', () => {
     it('custom error', () => {
-      class CustomError extends EggBaseError<ErrorOptions> {}
+      class CustomError extends EggBaseError<ErrorOptions> { }
       const err = new CustomError({
         code: 'CODE',
         message: 'error',
