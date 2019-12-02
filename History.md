@@ -1,4 +1,10 @@
 
+2.1.1 / 2019-12-02
+==================
+
+**fixes**
+  * [[`fbad6cd`](http://github.com/eggjs/egg-errors/commit/fbad6cd0ed5ae723b913124bf9176bfd36eb791f)] - fix: optimize from function (#9) (Peng Gao <<ggjqzjgp103@qq.com>>)
+
 2.1.0 / 2018-12-26
 ==================
 
