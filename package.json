@@ -17,7 +17,9 @@
     "lib/**/*.js",
     "lib/**/*.d.ts"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "circular-json-for-egg": "^1.0.0"
+  },
   "devDependencies": {
     "@types/mocha": "^2.2.40",
     "@types/node": "^7.0.12",
