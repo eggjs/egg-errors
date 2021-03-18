@@ -91,7 +91,7 @@ class CustomError extends EggBaseError<CustomErrorOptions> {
 }
 ```
 
-Recommand use message instead of options in user land that it can be easily understood by developer, see [http error](https://github.com/eggjs/egg-errors/blob/master/lib/http/400.ts).
+Recommend use message instead of options in user land that it can be easily understood by developer, see [http error](https://github.com/eggjs/egg-errors/blob/master/lib/http/400.ts).
 
 ### HTTP Errors
 
@@ -110,6 +110,102 @@ const { E403 } = require('egg-errors');
 const err = new E403('your request is forbidden');
 console.log(err.status); // 403
 ```
+
+### FrameworkBaseError
+
+FrameworkBaseError is for egg framework/plugin developer to throw framework error.it can format by FrameworkErrorFormater
+
+FrameworkBaseError extends EggBaseError providing three properties which is `module`、`serialNumber` and `errorContext`
+
+FrameworkBaseError could not be used directly, framework/plugin should extends like this
+
+```js
+const { FrameworkBaseError } = require('egg-errors');
+
+class EggMysqlError extends FrameworkBaseError {
+  // module should be implement
+  get module() {
+    return 'EGG_MYSQL';
+  }
+}
+
+const err = new EggMysqlError('error message', '01', { traceId: 'xxx' });
+console.log(err.module); // EGG_MYSQL
+console.log(err.serialNumber); // 01
+console.log(err.code); // EGG_MYSQL_01
+console.log(err.errorContext); // { traceId: 'xxx' }
+```
+
+### FrameworkErrorFormater
+
+FrameworkErrorFormater will append a faq guide url in error message.this would be helpful when developer encountered a framework error
+
+the faq guide url format: `${faqPrefix}/${err.module}#${err.serialNumber}`, `faqPrefix` is `https://eggjs.org/zh-cn/faq` by default. can be extendable or set `process.env.EGG_FRAMEWORK_ERR_FAQ_PERFIX` to override it.
+
+```js
+const { FrameworkErrorFormater } = require('egg-errors');
+
+class CustomErrorFormatter extends FrameworkErrorFormater {
+  static faqPrefix = 'http://www.custom.com/faq';
+}
+```
+
+#### .format(err)
+
+format error to message, it will not effect origin error
+
+```js
+const { FrameworkBaseError, FrameworkErrorFormater } = require('egg-errors');
+
+class EggMysqlError extends FrameworkBaseError {
+  // module should be implement
+  get module() {
+    return 'EGG_MYSQL';
+  }
+}
+
+const message = FrameworkErrorFormater.format(new EggMysqlError('error message', '01'));
+console.log(message); 
+// => message format like this
+framework.EggMysqlError: error message [https://eggjs.org/zh-cn/faq/EGG_MYSQL#01]
+...stack
+...
+code: "EGG_MYSQL_01"
+serialNumber: "01"
+errorContext:
+pid: 66568
+hostname: xxx
+
+
+// extends
+class CustomErrorFormatter extends FrameworkErrorFormater {
+  static faqPrefix = 'http://www.custom.com/faq';
+}
+const message = CustomErrorFormatter.format(new EggMysqlError('error message', '01'));
+console.log(message); 
+// =>
+framework.EggMysqlError: error message [http://www.custom.com/faq/EGG_MYSQL#01]
+...
+```
+
+#### .formatError(err)
+
+append faq guide url to err.message
+
+```js
+const { FrameworkBaseError, FrameworkErrorFormater } = require('egg-errors');
+
+class EggMysqlError extends FrameworkBaseError {
+  // module should be implement
+  get module() {
+    return 'EGG_MYSQL';
+  }
+}
+
+const err = FrameworkErrorFormater.formatError(new EggMysqlError('error message', '01'));
+console.log(err.message); // error message [https://eggjs.org/zh-cn/faq/EGG_MYSQL#01]
+```
+
 
 ### Available Errors
 
