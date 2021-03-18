@@ -3,8 +3,8 @@
   "version": "2.1.1",
   "description": "",
   "scripts": {
-    "test": "egg-bin test --typescript",
-    "cov": "egg-bin cov --typescript",
+    "test": "EGG_FRAMEWORK_ERR_FAQ_PERFIX=https://www.xxx.com/faq egg-bin test --typescript",
+    "cov": "EGG_FRAMEWORK_ERR_FAQ_PERFIX=https://www.xxx.com/faq egg-bin cov --typescript",
     "tsc": "tsc -p tsconfig.json",
     "ci": "npm run lint && npm run cov && npm run tsc",
     "autod": "autod",
@@ -28,6 +28,7 @@
     "dedent": "^0.7.0",
     "egg-bin": "^4.9.0",
     "egg-ci": "^1.8.0",
+    "egg-mock": "^4.0.1",
     "statuses": "^1.5.0",
     "toidentifier": "^1.0.0",
     "tslint": "^5.11.0",

@@ -1,6 +1,6 @@
 import { FrameworkBaseError } from './framework_base_error';
 import * as util from 'util';
-import circularJSON from 'circular-json-for-egg';
+import * as circularJSON from 'circular-json-for-egg';
 import * as os from 'os';
 const hostname = os.hostname();
 
@@ -45,13 +45,16 @@ export class FrameworkErrorFormater {
   protected static faqPrefix: string = 'https://eggjs.org/zh-cn/faq';
   private static faqPrefixEnv = process.env.EGG_FRAMEWORK_ERR_FAQ_PERFIX;
   
-  static format(err: Error): String {
+  static format(err: Error): string {
     let errMessage = err.message;
     if (err instanceof FrameworkBaseError) {
-      errMessage += `[参考:${FrameworkErrorFormater.faqPrefixEnv || FrameworkErrorFormater.faqPrefix}/${err.module}#${err.serialNumber}]`;
+      errMessage += ` [${this.faqPrefixEnv || this.faqPrefix}/${err.module}#${err.serialNumber}]`;
     }
     const errStack = err.stack || 'no_stack';
-    const errProperties = Object.keys(err).map(key => inspect(key, err[key])).join('\n');
+    const errProperties = Object.keys(err).map(key => {
+      if (['options', 'name', 'message'].includes(key)) return '';
+      return inspect(key, err[key]);
+    }).filter(item => !!item).join('\n');
     return util.format('framework.%s: %s\n%s\n%s\npid: %s\nhostname: %s\n',
       err.name,
       errMessage,
