@@ -9,7 +9,7 @@
     "ci": "npm run lint && npm run cov && npm run tsc",
     "autod": "autod",
     "prepublishOnly": "npm run tsc",
-    "lint": "tslint --project tsconfig.json"
+    "lint": "eslint . --ext .ts"
   },
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -29,10 +29,10 @@
     "egg-bin": "^4.9.0",
     "egg-ci": "^1.8.0",
     "egg-mock": "^4.0.1",
+    "eslint": "^7.22.0",
+    "eslint-config-egg": "^9.0.0",
     "statuses": "^1.5.0",
     "toidentifier": "^1.0.0",
-    "tslint": "^5.11.0",
-    "tslint-config-egg": "^1.0.0",
     "typescript": "^3.2.2"
   },
   "engines": {

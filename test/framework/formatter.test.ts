@@ -1,5 +1,5 @@
 import * as assert from 'assert';
-import mock from 'egg-mock'
+import mock from 'egg-mock';
 import { FrameworkErrorFormater, FrameworkBaseError } from '../../lib';
 import * as os from 'os';
 const hostname = os.hostname();
@@ -44,11 +44,11 @@ describe('test/framework/formatter.test.ts', () => {
           obj: {
             date: new Date(),
             obj: {
-              arr: ['abc', 123],
+              arr: [ 'abc', 123 ],
             },
           },
-          arr: [false, true],
-        }
+          arr: [ false, true ],
+        },
       });
       const message = FrameworkErrorFormater.format(err);
       assert(/errorContext: \{\"str\"\:\"str\",\"num\":123,\"obj\"\:\{\"buf\"\:\"\<Buffer 61 61 61\>\",\"obj\"\:\{\"date\"\:\".*\",\"obj\"\:\{\"arr\"\:\[\"abc\",123\]\}\},\"arr\"\:\[false,true\]\}\}/.test(message));
@@ -64,13 +64,46 @@ describe('test/framework/formatter.test.ts', () => {
 
   describe('extendable', () => {
     it('custom formatter should work', () => {
-      class customErrorFormatter extends FrameworkErrorFormater {
+      class CustomErrorFormatter extends FrameworkErrorFormater {
         static faqPrefix = 'http://custom/faq';
       }
-      mock(customErrorFormatter, 'faqPrefixEnv', null);
+      mock(CustomErrorFormatter, 'faqPrefixEnv', null);
       const err = new CustomError('error', '00');
-      const message = customErrorFormatter.format(err);
+      const message = CustomErrorFormatter.format(err);
       assert(message.includes('framework.CustomError: error [http://custom/faq/customPlugin#00]'));
+    });
+  });
+
+  describe('formatError', () => {
+    it('should format FrameworkError', () => {
+      let err = new CustomError('error', '00', 'errorContext');
+      err = FrameworkErrorFormater.formatError(err);
+      assert(err.message === 'error [https://www.xxx.com/faq/customPlugin#00]');
+    });
+
+    it('should format normal error', () => {
+      let err = new Error('error');
+      err = FrameworkErrorFormater.formatError(err);
+      assert(err.message === 'error');
+    });
+
+    it('should use default faqPrefix', () => {
+      mock(FrameworkErrorFormater, 'faqPrefixEnv', null);
+      let err = new CustomError('error', '00');
+      err = FrameworkErrorFormater.formatError(err);
+      assert(err.message === 'error [https://eggjs.org/zh-cn/faq/customPlugin#00]');
+    });
+
+    describe('extendable', () => {
+      it('custom formatter should work', () => {
+        class CustomErrorFormatter extends FrameworkErrorFormater {
+          static faqPrefix = 'http://custom/faq';
+        }
+        mock(CustomErrorFormatter, 'faqPrefixEnv', null);
+        let err = new CustomError('error', '00');
+        err = CustomErrorFormatter.formatError(err);
+        assert(err.message === 'error [http://custom/faq/customPlugin#00]');
+      });
     });
   });
 });

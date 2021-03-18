@@ -12,7 +12,7 @@ class BaseError<T extends ErrorOptions> extends Error {
   }
 
   public static from<
-    S extends new (...args: any) => InstanceType<typeof BaseError>,
+    S extends new(...args: any) => InstanceType<typeof BaseError>,
     P extends ConstructorParameters<S>
   >(this: S, err: Error, ...args: P | undefined[]): InstanceType<S> {
     const ErrorClass = this;

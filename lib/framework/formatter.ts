@@ -42,9 +42,9 @@ function formatObject(obj) {
 }
 
 export class FrameworkErrorFormater {
-  protected static faqPrefix: string = 'https://eggjs.org/zh-cn/faq';
+  protected static faqPrefix = 'https://eggjs.org/zh-cn/faq';
   private static faqPrefixEnv = process.env.EGG_FRAMEWORK_ERR_FAQ_PERFIX;
-  
+
   static format(err: Error): string {
     let errMessage = err.message;
     if (err instanceof FrameworkBaseError) {
@@ -52,16 +52,24 @@ export class FrameworkErrorFormater {
     }
     const errStack = err.stack || 'no_stack';
     const errProperties = Object.keys(err).map(key => {
-      if (['options', 'name', 'message'].includes(key)) return '';
+      if ([ 'options', 'name', 'message' ].includes(key)) return '';
       return inspect(key, err[key]);
-    }).filter(item => !!item).join('\n');
+    }).filter(item => !!item)
+      .join('\n');
     return util.format('framework.%s: %s\n%s\n%s\npid: %s\nhostname: %s\n',
       err.name,
       errMessage,
       errStack.substring(errStack.indexOf('\n') + 1),
       errProperties,
       process.pid,
-      hostname
+      hostname,
     );
+  }
+
+  static formatError<T extends Error>(err: T): T {
+    if (err instanceof FrameworkBaseError) {
+      err.message += ` [${this.faqPrefixEnv || this.faqPrefix}/${err.module}#${err.serialNumber}]`;
+    }
+    return err;
   }
 }
