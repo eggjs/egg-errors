@@ -8,6 +8,10 @@ export { default as ErrorType } from './error_type';
 export { default as EggError } from './error';
 export { default as EggException } from './exception';
 
+// framework error and formatter
+export { FrameworkBaseError } from './framework/framework_base_error';
+export { FrameworkErrorFormater } from './framework/formatter';
+
 // http error
 export { default as HttpError } from './http/http_error';
 
