@@ -13,7 +13,7 @@ export class FrameworkErrorFormater {
       errMessage += ` [${this.faqPrefixEnv || this.faqPrefix}/${err.module}#${err.serialNumber}]`;
     }
     const errStack = err.stack || 'no_stack';
-    
+
     return util.format('framework.%s: %s\n%s\ncode: %s\nserialNumber: %s\nerrorContext: %j\npid: %s\nhostname: %s\n',
       err.name,
       errMessage,
