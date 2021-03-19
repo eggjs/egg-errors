@@ -2,8 +2,8 @@ import { EggBaseError, ErrorOptions } from '../';
 import * as assert from 'assert';
 
 export class FrameworkBaseError extends EggBaseError<ErrorOptions> {
-  public serialNumber: string;
-  public errorContext?: any;
+  public readonly serialNumber: string;
+  public readonly errorContext?: any;
 
   get module(): string {
     throw new Error('module should be implement');

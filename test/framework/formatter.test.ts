@@ -16,8 +16,8 @@ describe('test/framework/formatter.test.ts', () => {
       const err = new CustomError('error', '00', 'errorContext');
       const message = FrameworkErrorFormater.format(err);
       assert(message.includes('framework.CustomError: error [https://www.xxx.com/faq/customPlugin#00]'));
-      assert(message.includes('code: "customPlugin_00"'));
-      assert(message.includes('serialNumber: "00"'));
+      assert(message.includes('code: customPlugin_00'));
+      assert(message.includes('serialNumber: 00'));
       assert(message.includes('errorContext: "errorContext"'));
       assert(/pid:\s\d+/.test(message));
       assert(message.includes(`hostname: ${hostname}`));
@@ -51,7 +51,7 @@ describe('test/framework/formatter.test.ts', () => {
         },
       });
       const message = FrameworkErrorFormater.format(err);
-      assert(/errorContext: \{\"str\"\:\"str\",\"num\":123,\"obj\"\:\{\"buf\"\:\"\<Buffer 61 61 61\>\",\"obj\"\:\{\"date\"\:\".*\",\"obj\"\:\{\"arr\"\:\[\"abc\",123\]\}\},\"arr\"\:\[false,true\]\}\}/.test(message));
+      assert(/errorContext: \{\"str\"\:\"str\",\"num\"\:123,\"obj\"\:\{\"buf\"\:\{\"type\"\:\"Buffer\",\"data\"\:\[97,97,97\]\},\"obj\"\:\{\"date\"\:\".*\",\"obj\"\:\{\"arr\"\:\[\"abc\",123\]\}\},\"arr\"\:\[false,true\]\}\}/.test(message));
     });
 
     it('should use default faqPrefix', () => {

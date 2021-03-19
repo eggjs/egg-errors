@@ -4,30 +4,22 @@ import { FrameworkBaseError } from '../../lib';
 describe('test/framework/framework_base_error.test.ts', () => {
   describe('invalid', () => {
     it('should throw error when message or serialNumber empty', () => {
-      try {
+      assert.throws(() => {
         // @ts-ignore
         new FrameworkBaseError();
-        assert(false, 'never here');
-      } catch (err) {
-        assert(err.message === 'message is required');
-      }
+      }, /message is required/);
 
-      try {
+      assert.throws(() => {
         // @ts-ignore
         new FrameworkBaseError('error');
-        assert(false, 'never here');
-      } catch (err) {
-        assert(err.message === 'serialNumber is required');
-      }
+      }, /serialNumber is required/);
     });
 
-    it('should throw error use FrameworkBaseError', () => {
-      try {
+    it('should throw error use FrameworkBaseError directly', () => {
+      assert.throws(() => {
+        // @ts-ignore
         new FrameworkBaseError('error', '0');
-        assert(false, 'never here');
-      } catch (err) {
-        assert(err.message === 'module should be implement');
-      }
+      }, /module should be implement/);
     });
   });
 
