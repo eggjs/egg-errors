@@ -216,6 +216,7 @@ BaseError
 |  |- HttpError
 |  |  |- NotFoundError, alias to E404
 |  |  `- ...
+|  |- FrameworkBaseError
 |  `- CustomError
 `- EggBaseException
    |- EggException
