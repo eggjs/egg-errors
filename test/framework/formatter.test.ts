@@ -4,7 +4,7 @@ import { FrameworkErrorFormater, FrameworkBaseError } from '../../lib';
 import * as os from 'os';
 const hostname = os.hostname();
 
-describe('test/framework/formatter.test.ts', () => {
+describe.only('test/framework/formatter.test.ts', () => {
   beforeEach(mock.restore);
   class CustomError extends FrameworkBaseError {
     get module() {
@@ -15,7 +15,7 @@ describe('test/framework/formatter.test.ts', () => {
     it('should format FrameworkError', () => {
       const err = new CustomError('error', '00', 'errorContext');
       const message = FrameworkErrorFormater.format(err);
-      assert(message.includes('framework.CustomError: error [https://www.xxx.com/faq/customPlugin#00]'));
+      assert(message.includes('framework.CustomError: error [https://eggjs.org/zh-cn/faq/customPlugin#00]'));
       assert(message.includes('code: customPlugin_00'));
       assert(message.includes('serialNumber: 00'));
       assert(message.includes('errorContext: "errorContext"'));
@@ -78,7 +78,7 @@ describe('test/framework/formatter.test.ts', () => {
     it('should format FrameworkError', () => {
       let err = new CustomError('error', '00', 'errorContext');
       err = FrameworkErrorFormater.formatError(err);
-      assert(err.message === 'error [https://www.xxx.com/faq/customPlugin#00]');
+      assert(err.message === 'error [https://eggjs.org/zh-cn/faq/customPlugin#00]');
     });
 
     it('should format normal error', () => {
