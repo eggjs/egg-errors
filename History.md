@@ -1,4 +1,10 @@
 
+2.2.0 / 2021-03-22
+==================
+
+**others**
+  * [[`cae5451`](http://github.com/eggjs/egg-errors/commit/cae545101335c8a878ec4ee9094aeca1c688b825)] - Feat/framework error (#10) (mansonchor.github.com <<mansonchor@126.com>>)
+
 2.1.1 / 2019-12-02
 ==================
 
