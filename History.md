@@ -1,4 +1,10 @@
 
+2.2.1 / 2021-03-29
+==================
+
+**fixes**
+  * [[`510ca7b`](http://github.com/eggjs/egg-errors/commit/510ca7b95edff4c2a2b9227c01ae8baa14cf5af3)] - fix: faqUrl suffix use err.code (mansonchor <<mansonchor1987@gmail.com>>)
+
 2.2.0 / 2021-03-22
 ==================
 
