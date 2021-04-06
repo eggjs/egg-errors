@@ -1,4 +1,4 @@
-import { FrameworkBaseError } from './framework_base_error';
+import { FRAMEWORK_ERROR_SYMBOL } from './framework_base_error';
 import * as util from 'util';
 import * as os from 'os';
 const hostname = os.hostname();
@@ -9,7 +9,7 @@ export class FrameworkErrorFormater {
 
   static format(err: Error): string {
     let errMessage = err.message;
-    if (err instanceof FrameworkBaseError) {
+    if ((err as any)[FRAMEWORK_ERROR_SYMBOL]) {
       errMessage += ` [${this.faqPrefixEnv || this.faqPrefix}/${err.code}]`;
     }
     const errStack = err.stack || 'no_stack';
@@ -27,7 +27,7 @@ export class FrameworkErrorFormater {
   }
 
   static formatError<T extends Error>(err: T): T {
-    if (err instanceof FrameworkBaseError) {
+    if ((err as any)[FRAMEWORK_ERROR_SYMBOL]) {
       err.message += ` [${this.faqPrefixEnv || this.faqPrefix}/${err.code}]`;
     }
     return err;

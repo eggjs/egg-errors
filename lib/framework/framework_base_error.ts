@@ -1,6 +1,8 @@
 import { EggBaseError, ErrorOptions } from '../';
 import * as assert from 'assert';
 
+export const FRAMEWORK_ERROR_SYMBOL: symbol = Symbol.for('FrameworkBaseError');
+
 export class FrameworkBaseError extends EggBaseError<ErrorOptions> {
   public readonly serialNumber: string;
   public readonly errorContext?: any;
@@ -17,5 +19,7 @@ export class FrameworkBaseError extends EggBaseError<ErrorOptions> {
     this.serialNumber = String(serialNumber);
     this.errorContext = errorContext || '';
     this.code = `${this.module}_${this.serialNumber}`;
+
+    (this as any)[FRAMEWORK_ERROR_SYMBOL] = true;
   }
 }
