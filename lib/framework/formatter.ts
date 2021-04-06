@@ -9,7 +9,7 @@ export class FrameworkErrorFormater {
 
   static format(err: Error): string {
     let errMessage = err.message;
-    if (err instanceof FrameworkBaseError) {
+    if (FrameworkBaseError.isFrameworkError(err)) {
       errMessage += ` [${this.faqPrefixEnv || this.faqPrefix}/${err.code}]`;
     }
     const errStack = err.stack || 'no_stack';
@@ -27,7 +27,7 @@ export class FrameworkErrorFormater {
   }
 
   static formatError<T extends Error>(err: T): T {
-    if (err instanceof FrameworkBaseError) {
+    if (FrameworkBaseError.isFrameworkError(err)) {
       err.message += ` [${this.faqPrefixEnv || this.faqPrefix}/${err.code}]`;
     }
     return err;
