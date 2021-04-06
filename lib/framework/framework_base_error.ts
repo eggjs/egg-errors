@@ -22,4 +22,8 @@ export class FrameworkBaseError extends EggBaseError<ErrorOptions> {
 
     (this as any)[FRAMEWORK_ERROR_SYMBOL] = true;
   }
+
+  static isFrameworkError(err: Error): err is FrameworkBaseError {
+    return (err as any)[FRAMEWORK_ERROR_SYMBOL] === true;
+  }
 }
