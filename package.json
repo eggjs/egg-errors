@@ -1,6 +1,6 @@
 {
   "name": "egg-errors",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "",
   "scripts": {
     "test": "egg-bin test --typescript",

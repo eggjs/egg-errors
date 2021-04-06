@@ -1,4 +1,10 @@
 
+2.2.2 / 2021-04-06
+==================
+
+**fixes**
+  * [[`4e41373`](http://github.com/eggjs/egg-errors/commit/4e41373129601aa4e09faef21c607f432f9d1105)] - fix: judge frameworkError ins replace to Symbol.for (mansonchor.github.com <<mansonchor1987@gmail.com>>)
+
 2.2.1 / 2021-03-29
 ==================
 
