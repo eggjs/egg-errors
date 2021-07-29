@@ -8,9 +8,10 @@ export class FrameworkErrorFormater {
   private static faqPrefixEnv = process.env.EGG_FRAMEWORK_ERR_FAQ_PERFIX;
 
   static format(err: Error): string {
+    const faqPrefix = this.faqPrefixEnv || this.faqPrefix;
     let errMessage = err.message;
-    if (FrameworkBaseError.isFrameworkError(err)) {
-      errMessage += ` [${this.faqPrefixEnv || this.faqPrefix}/${err.code}]`;
+    if (FrameworkBaseError.isFrameworkError(err) && !errMessage.includes(faqPrefix)) {
+      errMessage += ` [${faqPrefix}/${err.code}]`;
     }
     const errStack = err.stack || 'no_stack';
 
@@ -27,8 +28,9 @@ export class FrameworkErrorFormater {
   }
 
   static formatError<T extends Error>(err: T): T {
-    if (FrameworkBaseError.isFrameworkError(err)) {
-      err.message += ` [${this.faqPrefixEnv || this.faqPrefix}/${err.code}]`;
+    const faqPrefix = this.faqPrefixEnv || this.faqPrefix;
+    if (FrameworkBaseError.isFrameworkError(err) && !err.message.includes(faqPrefix)) {
+      err.message += ` [${faqPrefix}/${err.code}]`;
     }
     return err;
   }

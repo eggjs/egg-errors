@@ -98,12 +98,18 @@ describe('test/framework/formatter.test.ts', () => {
       assert(err.message === 'error [https://eggjs.org/zh-cn/faq/customPlugin_00]');
     });
 
-
     it('should use faqPrefixEnv', () => {
       mock(FrameworkErrorFormater, 'faqPrefixEnv', 'https://www.custom.com/faq');
       let err = new CustomError('error', '00');
       err = FrameworkErrorFormater.formatError(err);
       assert(err.message === 'error [https://www.custom.com/faq/customPlugin_00]');
+    });
+
+    it('will not append faq twice', () => {
+      let err = new CustomError('error', '00', 'errorContext');
+      err = FrameworkErrorFormater.formatError(err);
+      const message = FrameworkErrorFormater.format(err);
+      assert(message.split('https://eggjs.org/zh-cn/faq').length === 2);
     });
 
     describe('extendable', () => {
