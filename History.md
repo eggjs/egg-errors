@@ -1,4 +1,10 @@
 
+2.2.3 / 2021-07-29
+==================
+
+**fixes**
+  * [[`c3a89cc`](http://github.com/eggjs/egg-errors/commit/c3a89ccefe2370deb5400729fdad106dc6e84a52)] - fix: faq url append twice (#12) (mansonchor.github.com <<mansonchor1987@gmail.com>>)
+
 2.2.2 / 2021-04-06
 ==================
 
