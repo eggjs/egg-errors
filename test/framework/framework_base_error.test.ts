@@ -60,4 +60,32 @@ describe('test/framework/framework_base_error.test.ts', () => {
       assert.deepStrictEqual(err.errorContext, { traceId: 'xxx' });
     });
   });
+
+  describe('static method', () => {
+    class TestError extends FrameworkBaseError {
+      get module() {
+        return 'TEST';
+      }
+    }
+
+    it('should create static method work', async () => {
+      const err = TestError.create('mock error', 'CODE', { data: 'data' });
+      assert(err.module === 'TEST');
+      assert(err.code === 'TEST_CODE');
+      assert(err.message === 'mock error [https://eggjs.org/zh-cn/faq/TEST_CODE]');
+      assert(err.serialNumber === 'CODE');
+      assert.deepStrictEqual(err.errorContext, { data: 'data' });
+      assert(!err.stack?.includes('Function.create'));
+    });
+
+    it('should isFrameworkError static method work', async () => {
+      const err1 = TestError.create('mock error', 'CODE', { data: 'data' });
+      const err2 = new TestError('mock error', 'CODE');
+      const err3 = new Error('xxx');
+
+      assert(FrameworkBaseError.isFrameworkError(err1));
+      assert(FrameworkBaseError.isFrameworkError(err2));
+      assert(!FrameworkBaseError.isFrameworkError(err3));
+    });
+  });
 });

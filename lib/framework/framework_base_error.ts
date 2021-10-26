@@ -1,4 +1,5 @@
 import { EggBaseError, ErrorOptions } from '../';
+import { FrameworkErrorFormater } from './formatter';
 import * as assert from 'assert';
 
 export const FRAMEWORK_ERROR_SYMBOL: symbol = Symbol.for('FrameworkBaseError');
@@ -21,6 +22,13 @@ export class FrameworkBaseError extends EggBaseError<ErrorOptions> {
     this.code = `${this.module}_${this.serialNumber}`;
 
     (this as any)[FRAMEWORK_ERROR_SYMBOL] = true;
+  }
+
+  // create a new frameworkError with format
+  static create(message: string, serialNumber: string | number, errorContext?: any) {
+    const err = FrameworkErrorFormater.formatError(new this(message, serialNumber, errorContext));
+    Error.captureStackTrace(err, this.create);
+    return err;
   }
 
   static isFrameworkError(err: Error): err is FrameworkBaseError {
