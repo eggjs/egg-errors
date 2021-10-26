@@ -1,4 +1,10 @@
 
+2.3.0 / 2021-10-26
+==================
+
+**features**
+  * [[`94453a4`](http://github.com/eggjs/egg-errors/commit/94453a4b2b24c98b0fc53020808340e446a04ed8)] - feat: add static create method (#13) (mansonchor.github.com <<mansonchor1987@gmail.com>>)
+
 2.2.3 / 2021-07-29
 ==================
 
