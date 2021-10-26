@@ -136,11 +136,31 @@ console.log(err.code); // EGG_MYSQL_01
 console.log(err.errorContext); // { traceId: 'xxx' }
 ```
 
+#### create frameworkError with formater
+
+use the static method `.create(message: string, serialNumber: string | number, errorContext?: any)` to new a frameworkError and format it convenient
+
+```js
+const { FrameworkBaseError } = require('egg-errors');
+
+class EggMysqlError extends FrameworkBaseError {
+  // module should be implement
+  get module() {
+    return 'EGG_MYSQL';
+  }
+}
+
+const err = EggMysqlError.create('error message', '01', { traceId: 'xxx' });
+console.log(err.message); 
+// =>
+framework.EggMysqlError: error message [https://eggjs.org/zh-cn/faq/EGG_MYSQL/01]
+```
+
 ### FrameworkErrorFormater
 
 FrameworkErrorFormater will append a faq guide url in error message.this would be helpful when developer encountered a framework error
 
-the faq guide url format: `${faqPrefix}/${err.module}#${err.serialNumber}`, `faqPrefix` is `https://eggjs.org/zh-cn/faq` by default. can be extendable or set `process.env.EGG_FRAMEWORK_ERR_FAQ_PERFIX` to override it.
+the faq guide url format: `${faqPrefix}/${err.module}/${err.serialNumber}`, `faqPrefix` is `https://eggjs.org/zh-cn/faq` by default. can be extendable or set `process.env.EGG_FRAMEWORK_ERR_FAQ_PERFIX` to override it.
 
 ```js
 const { FrameworkErrorFormater } = require('egg-errors');
@@ -167,7 +187,7 @@ class EggMysqlError extends FrameworkBaseError {
 const message = FrameworkErrorFormater.format(new EggMysqlError('error message', '01'));
 console.log(message); 
 // => message format like this
-framework.EggMysqlError: error message [https://eggjs.org/zh-cn/faq/EGG_MYSQL#01]
+framework.EggMysqlError: error message [https://eggjs.org/zh-cn/faq/EGG_MYSQL/01]
 ...stack
 ...
 code: "EGG_MYSQL_01"
@@ -184,7 +204,7 @@ class CustomErrorFormatter extends FrameworkErrorFormater {
 const message = CustomErrorFormatter.format(new EggMysqlError('error message', '01'));
 console.log(message); 
 // =>
-framework.EggMysqlError: error message [http://www.custom.com/faq/EGG_MYSQL#01]
+framework.EggMysqlError: error message [http://www.custom.com/faq/EGG_MYSQL/01]
 ...
 ```
 
@@ -203,7 +223,7 @@ class EggMysqlError extends FrameworkBaseError {
 }
 
 const err = FrameworkErrorFormater.formatError(new EggMysqlError('error message', '01'));
-console.log(err.message); // error message [https://eggjs.org/zh-cn/faq/EGG_MYSQL#01]
+console.log(err.message); // error message [https://eggjs.org/zh-cn/faq/EGG_MYSQL/01]
 ```
 
 
