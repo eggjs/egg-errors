@@ -72,7 +72,7 @@ describe('test/framework/framework_base_error.test.ts', () => {
       const err = TestError.create('mock error', 'CODE', { data: 'data' });
       assert(err.module === 'TEST');
       assert(err.code === 'TEST_CODE');
-      assert(err.message === 'mock error [https://eggjs.org/zh-cn/faq/TEST_CODE]');
+      assert(err.message === 'mock error [ https://eggjs.org/zh-cn/faq/TEST_CODE ]');
       assert(err.serialNumber === 'CODE');
       assert.deepStrictEqual(err.errorContext, { data: 'data' });
       assert(!err.stack?.includes('Function.create'));
