@@ -1,14 +1,12 @@
 # egg-errors
 [![NPM version][npm-image]][npm-url]
-[![build status][travis-image]][travis-url]
+[![Node.js CI](https://github.com/eggjs/egg-errors/actions/workflows/nodejs.yml/badge.svg)](https://github.com/eggjs/egg-errors/actions/workflows/nodejs.yml)
 [![Test coverage][codecov-image]][codecov-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
 
 [npm-image]: https://img.shields.io/npm/v/egg-errors.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/egg-errors
-[travis-image]: https://img.shields.io/travis/eggjs/egg-errors.svg?style=flat-square
-[travis-url]: https://travis-ci.org/eggjs/egg-errors
 [codecov-image]: https://codecov.io/gh/eggjs/egg-errors/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/eggjs/egg-errors
 [snyk-image]: https://snyk.io/test/npm/egg-errors/badge.svg?style=flat-square
@@ -16,7 +14,7 @@
 [download-image]: https://img.shields.io/npm/dm/egg-errors.svg?style=flat-square
 [download-url]: https://npmjs.org/package/egg-errors
 
-Errors for Egg.js.
+Errors for [Egg.js](https://eggjs.org)
 
 egg-errors provide two kinds of errors that is Error and Exception.
 

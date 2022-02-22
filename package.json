@@ -47,6 +47,9 @@
     "type": "git",
     "url": "git@github.com:eggjs/egg-errors.git"
   },
+  "bugs": {
+    "url": "https://github.com/eggjs/egg/issues"
+  },
   "eslintIgnore": [
     "coverage"
   ],
