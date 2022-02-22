@@ -11,7 +11,7 @@ export class FrameworkErrorFormater {
     const faqPrefix = this.faqPrefixEnv || this.faqPrefix;
     let errMessage = err.message;
     if (FrameworkBaseError.isFrameworkError(err) && !errMessage.includes(faqPrefix)) {
-      errMessage += ` [${faqPrefix}/${err.code}]`;
+      errMessage += ` [ ${faqPrefix}/${err.code} ]`;
     }
     const errStack = err.stack || 'no_stack';
 
@@ -30,7 +30,7 @@ export class FrameworkErrorFormater {
   static formatError<T extends Error>(err: T): T {
     const faqPrefix = this.faqPrefixEnv || this.faqPrefix;
     if (FrameworkBaseError.isFrameworkError(err) && !err.message.includes(faqPrefix)) {
-      err.message += ` [${faqPrefix}/${err.code}]`;
+      err.message += ` [ ${faqPrefix}/${err.code} ]`;
     }
     return err;
   }
