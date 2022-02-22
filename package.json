@@ -3,6 +3,7 @@
   "version": "2.3.1",
   "description": "",
   "scripts": {
+    "contributor": "git-contributor",
     "test": "egg-bin test --typescript",
     "cov": "egg-bin cov --typescript",
     "tsc": "tsc -p tsconfig.json",
@@ -29,6 +30,7 @@
     "egg-mock": "^4.0.1",
     "eslint": "^6",
     "eslint-config-egg": "^9.0.0",
+    "git-contributor": "^1.0.10",
     "statuses": "^1.5.0",
     "toidentifier": "^1.0.0",
     "typescript": "^3.2.2"

@@ -2,7 +2,6 @@
 [![NPM version][npm-image]][npm-url]
 [![build status][travis-image]][travis-url]
 [![Test coverage][codecov-image]][codecov-url]
-[![David deps][david-image]][david-url]
 [![Known Vulnerabilities][snyk-image]][snyk-url]
 [![npm download][download-image]][download-url]
 
@@ -12,8 +11,6 @@
 [travis-url]: https://travis-ci.org/eggjs/egg-errors
 [codecov-image]: https://codecov.io/gh/eggjs/egg-errors/branch/master/graph/badge.svg
 [codecov-url]: https://codecov.io/gh/eggjs/egg-errors
-[david-image]: https://img.shields.io/david/eggjs/egg-errors.svg?style=flat-square
-[david-url]: https://david-dm.org/eggjs/egg-errors
 [snyk-image]: https://snyk.io/test/npm/egg-errors/badge.svg?style=flat-square
 [snyk-url]: https://snyk.io/test/npm/egg-errors
 [download-image]: https://img.shields.io/npm/dm/egg-errors.svg?style=flat-square
@@ -153,7 +150,7 @@ class EggMysqlError extends FrameworkBaseError {
 const err = EggMysqlError.create('error message', '01', { traceId: 'xxx' });
 console.log(err.message); 
 // =>
-framework.EggMysqlError: error message [https://eggjs.org/zh-cn/faq/EGG_MYSQL/01]
+framework.EggMysqlError: error message [ https://eggjs.org/zh-cn/faq/EGG_MYSQL/01 ]
 ```
 
 ### FrameworkErrorFormater
@@ -187,7 +184,7 @@ class EggMysqlError extends FrameworkBaseError {
 const message = FrameworkErrorFormater.format(new EggMysqlError('error message', '01'));
 console.log(message); 
 // => message format like this
-framework.EggMysqlError: error message [https://eggjs.org/zh-cn/faq/EGG_MYSQL/01]
+framework.EggMysqlError: error message [ https://eggjs.org/zh-cn/faq/EGG_MYSQL/01 ]
 ...stack
 ...
 code: "EGG_MYSQL_01"
@@ -204,7 +201,7 @@ class CustomErrorFormatter extends FrameworkErrorFormater {
 const message = CustomErrorFormatter.format(new EggMysqlError('error message', '01'));
 console.log(message); 
 // =>
-framework.EggMysqlError: error message [http://www.custom.com/faq/EGG_MYSQL/01]
+framework.EggMysqlError: error message [ http://www.custom.com/faq/EGG_MYSQL/01 ]
 ...
 ```
 
@@ -223,7 +220,7 @@ class EggMysqlError extends FrameworkBaseError {
 }
 
 const err = FrameworkErrorFormater.formatError(new EggMysqlError('error message', '01'));
-console.log(err.message); // error message [https://eggjs.org/zh-cn/faq/EGG_MYSQL/01]
+console.log(err.message); // error message [ https://eggjs.org/zh-cn/faq/EGG_MYSQL/01 ]
 ```
 
 
@@ -250,3 +247,14 @@ Please open an issue [here](https://github.com/eggjs/egg/issues?q=is%3Aissue+is%
 ## License
 
 [MIT](LICENSE)
+<!-- GITCONTRIBUTOR_START -->
+
+## Contributors
+
+|[<img src="https://avatars.githubusercontent.com/u/360661?v=4" width="100px;"/><br/><sub><b>popomore</b></sub>](https://github.com/popomore)<br/>|[<img src="https://avatars.githubusercontent.com/u/2160731?v=4" width="100px;"/><br/><sub><b>mansonchor</b></sub>](https://github.com/mansonchor)<br/>|[<img src="https://avatars.githubusercontent.com/u/156269?v=4" width="100px;"/><br/><sub><b>fengmk2</b></sub>](https://github.com/fengmk2)<br/>|[<img src="https://avatars.githubusercontent.com/u/12657964?v=4" width="100px;"/><br/><sub><b>beliefgp</b></sub>](https://github.com/beliefgp)<br/>|[<img src="https://avatars.githubusercontent.com/u/19644997?v=4" width="100px;"/><br/><sub><b>sm2017</b></sub>](https://github.com/sm2017)<br/>|
+| :---: | :---: | :---: | :---: | :---: |
+
+
+This project follows the git-contributor [spec](https://github.com/xudafeng/git-contributor), auto updated at `Tue Feb 22 2022 11:32:47 GMT+0800`.
+
+<!-- GITCONTRIBUTOR_END -->

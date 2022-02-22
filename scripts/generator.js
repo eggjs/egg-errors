@@ -11,7 +11,7 @@ for (const status of Object.keys(statuses)) {
   const identifier = toidentifier(statuses[status]);
   const className = /Error$/.test(identifier) ? identifier : identifier + 'Error';
   const code = toCode(identifier);
-  const message = statuses[status].replace('\'', '\\\'');
+  const message = statuses[status].replace(/'/g, "\\'");
 
   console.info(`export { default as ${className}, default as E${status} } from './http/${status}';`);
 
