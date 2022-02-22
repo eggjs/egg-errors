@@ -1,4 +1,10 @@
 
+2.3.1 / 2022-02-22
+==================
+
+**features**
+  * [[`1992e0b`](http://github.com/eggjs/egg-errors/commit/1992e0bbcdb41c48b64771256e0fa8d27953cecb)] - feat: avoid auto link detect error on IM (#14) (fengmk2 <<fengmk2@gmail.com>>)
+
 2.3.0 / 2021-10-26
 ==================
 
